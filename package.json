@@ -1,7 +1,7 @@
 {
   "name": "localstorage-scuttlebutt",
-  "description": "",
-  "version": "0.0.0",
+  "description": "replicate localStorage with scuttlebutt",
+  "version": "1.0.0",
   "homepage": "https://github.com/dominictarr/localstorage-scuttlebutt",
   "repository": {
     "type": "git",
