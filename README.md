@@ -2,12 +2,6 @@
 
 replicate localstorage through scuttlebutt.
 
-[![travis](https://travis-ci.org/dominictarr/localstorage-scuttlebutt.png?branch=master)
-](https://travis-ci.org/dominictarr/localstorage-scuttlebutt)
-
-[![testling](http://ci.testling.com/dominictarr/localstorage-scuttlebutt.png)
-](http://ci.testling.com/dominictarr/localstorage-scuttlebutt)
-
 The same api as [scuttlebutt/model](https://github.com/dominictarr/scuttlebutt#scuttlebuttmodel)
 but data is saved in the browser using local storage.
 
