@@ -1,0 +1,17 @@
+{
+  "name": "example",
+  "version": "0.0.0",
+  "description": "",
+  "main": "client.js",
+  "scripts": {
+    "build": "browserify client.js --debug | indexhtmlify > index.html",
+    "start": "browserify client.js --debug | indexhtmlify > index.html; node server.js"
+  },
+  "author": "",
+  "license": "BSD",
+  "dependencies": {
+    "shoe": "0.0.12",
+    "reconnect": "~1.5.1",
+    "ecstatic": "~0.4.6"
+  }
+}
