@@ -32,6 +32,10 @@ function LocalStorageScuttlebutt (opts) {
       var key = ev.key.substring(self.prefix.length)
       try {
         var value = JSON.parse(ev.newValue)
+
+        if(self.store[self.prefix + ev.key] === value)
+          return
+
         self.emit('change', key, value[0])
         self.emit('change:'+key, value[0])
       } catch (err) {
@@ -52,7 +56,7 @@ LSS.keys = function () {
     if(this.rx.test(k))
       keys.push(k.substring(l))
   }
-  return keys
+  return keys.sort()
 }
 
 LSS.history = function () {
@@ -81,7 +85,10 @@ LSS.applyUpdate = function (update) {
   var change = update[0]
   var key    = change[0]
   update[0] = change[1]
-  this.store[this.prefix + key] = JSON.stringify(update)
+  var k = this.prefix + key
+  var v = JSON.stringify(update)
+  if(this.store[k] === v) return
+  this.store[k] = v
 
   this.emit('change', key, change[1])
   this.emit('change:'+key, change[1])
