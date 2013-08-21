@@ -112,4 +112,9 @@ LSS.set = function (key, value) {
   return this
 }
 
+LSS.each = function (iter) {
+  this.keys().forEach(function (k) {
+    iter(this.get(k), k)
+  })
+}
 
