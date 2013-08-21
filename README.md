@@ -36,7 +36,7 @@ replicate with a normal `scuttlebutt/model`, across anything that provides a Str
 //client
 var reconnect = require('reconnect')
 var LSSB = require('localstorage-scuttlebutt')
-var ls = new LSSB(ID, prefix)
+var ls = new LSSB({id: ID, prefix: prefix})
 
 reconnect(function (stream) {
   stream.pipe(ls.createStream()).pipe(stream)
@@ -56,6 +56,66 @@ shoe(function (stream) {
   req.resume()
 }).listen(3000))
 ```
+
+## API
+
+### Local
+
+opts represents the identity of the current machine.
+It should corrispond to the user session in this browser.
+prefix is the name of this object. You may use multiple
+`localstorage-scuttlebutt` instances in different parts of the same application
+by using different prefixes.
+
+``` js
+var LSSB = require('localstorage-scuttlebutt')
+var opts = {id: id, prefix: prefix}
+var model = new LSSB(opts)
+```
+
+### createStream()
+
+connect to a remote instance via a [duplex stream](https://github.com/substack/stream-handbook#duplex).
+```
+reconnect(function (stream) {
+  stream.pipe(model.createStream()).pipe(stream)
+}).connect('/shoe')
+```
+
+### set(key, value)
+
+set a property on an instance.
+
+``` js
+model.set(key, value)
+```
+
+### get(key)
+
+get a property on an instance.
+
+``` js
+model.get(key)
+```
+
+### keys()
+
+get all keys on instance as an array.
+
+``` js
+model.keys()
+```
+
+### each(function (value, key) {...})
+
+iterate over all `value, key` pairs.
+
+``` js
+model.each(function (value) {
+  console.log(value)
+})
+```
+`value` is first, like in `[].forEach` 
 
 ## License
 
