@@ -18,7 +18,7 @@ function LocalStorageScuttlebutt (opts) {
         || 'ID_' + Date.now() + Math.random()
       )
 
-  this.store['_id:' + this.prefix] = opts.id
+  this.store['_id:' + this.prefix] = id
 
   this.rx = new RegExp('^' + this.prefix)
 
