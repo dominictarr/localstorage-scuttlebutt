@@ -1,7 +1,7 @@
 var Scuttlebutt = require('scuttlebutt')
 var sort = require('scuttlebutt/util').sort
 var inherits = require('util').inherits
-
+var uuid = require('tiny-uuid')
 module.exports = LocalStorageScuttlebutt
 
 inherits(LocalStorageScuttlebutt, Scuttlebutt)
@@ -12,11 +12,18 @@ function LocalStorageScuttlebutt (opts) {
   this.opts = opts
   this.prefix = opts.prefix || '_lss'
 
+  // ****************
+  // !!! FIX THIS !!!
+  // ****************
+
   var id = (
-          opts.id
-        || localStorage['_id:' + this.prefix]
-        || 'ID_' + Date.now() + Math.random()
+           opts.id
+        || this.store['_id:' + this.prefix]
+        || uuid()
       )
+
+  //had this bug where id was 'undefined'
+  if(id == 'undefined') id = uuid()
 
   this.store['_id:' + this.prefix] = id
 
