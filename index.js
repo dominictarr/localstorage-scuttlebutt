@@ -12,10 +12,6 @@ function LocalStorageScuttlebutt (opts) {
   this.opts = opts
   this.prefix = opts.prefix || '_lss'
 
-  // ****************
-  // !!! FIX THIS !!!
-  // ****************
-
   var id = (
            opts.id
         || this.store['_id:' + this.prefix]
