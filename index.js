@@ -12,16 +12,11 @@ function LocalStorageScuttlebutt (opts) {
   this.opts = opts
   this.prefix = opts.prefix || '_lss'
 
-  var id = (
-           opts.id
-        || this.store['_id:' + this.prefix]
-        || uuid()
-      )
-
-  //had this bug where id was 'undefined'
-  if(id == 'undefined') id = uuid()
-
-  this.store['_id:' + this.prefix] = id
+  // changing how ID works.
+  // since you may want multiple LSSB instances on a single
+  // app, then this should be managed at that level, not
+  // internally. so just set a sensible default here...
+  var id = opts.id || uuid()
 
   this.rx = new RegExp('^' + this.prefix)
 
