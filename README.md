@@ -22,8 +22,10 @@ ls.on('change', function (key, value) {
 or have other data in `localStorage` you need to set this. By default,
 `prefix='_lss'`.
 
-`id` is optional, but if provided, it should represent the user session.
-(by default, it's remembered in localStorage, so the same value will be used next time)
+`id` should be a unique string that represents the user session.
+you should save this in `localStorage` (or a cookie).
+The same id may be reused across multiple tabs,
+but not across different browsers or devices.
 
 `store` defaults to `localStorage`, but `sessionStorage` may also be used. 
 (store must have `length` property and a `key()` method.
